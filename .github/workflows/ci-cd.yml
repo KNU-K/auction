@@ -45,9 +45,12 @@ jobs:
           script_stop: true
           script: |
             cd ./auction
-            git pull origin develop
+            git pull knk ttest
             ./gradlew editorconfigFormat
             ./gradlew build
-            sudo kill -9 $(sudo lsof -t -i:8080 || echo "")
+            PIDS=$(sudo lsof -t -i:8080)
+            if [ ! -z "$PIDS" ]; then
+            sudo kill -9 $PIDS
+            fi
             nohup java -jar build/libs/*SNAPSHOT.jar > ./output.log 2>&1 &
 
