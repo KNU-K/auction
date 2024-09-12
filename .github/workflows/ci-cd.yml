@@ -1,9 +1,9 @@
-name: Java CI with Gradle
+name: Java CI/CD with Gradle
 
 on:
   push:
     branches:
-      - 'main'
+      - 'ttest'
       - 'develop'
 
 jobs:
@@ -31,3 +31,17 @@ jobs:
 
       - name: Test with Gradle
         run: ./gradlew test
+
+  Deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: SSH 로 NCP 접속하기
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.NCP_HOST }}
+          username: ${{ secrets.NCP_USERNAME }}
+          password: ${{ secrets.NCP_SSH_PASSWORD }}
+          port: ${{ secrets.NCP_SSH_PORT}}
+          script_stop: true
+          script: |
+            whoami
