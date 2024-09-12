@@ -44,4 +44,4 @@ jobs:
           port: ${{ secrets.NCP_SSH_PORT}}
           script_stop: true
           script: |
-            whoami
+            touch test
