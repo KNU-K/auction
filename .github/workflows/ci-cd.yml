@@ -44,4 +44,10 @@ jobs:
           port: ${{ secrets.NCP_SSH_PORT}}
           script_stop: true
           script: |
-            touch test
+            cd ./auction
+            git pull origin develop
+            ./gradlew editorconfigFormat
+            ./gradlew build
+            sudo kill -9 $(sudo lsof -t -i :8080)
+            nohup java -jar build/libs/*SNAPSHOT.jar > ./output.log 2>&1 &
+
