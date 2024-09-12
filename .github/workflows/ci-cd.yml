@@ -45,7 +45,7 @@ jobs:
           script_stop: true
           script: |
             cd ./auction
-            git pull knk ttest
+            git pull knuk ttest
             ./gradlew editorconfigFormat
             ./gradlew build
             nohup java -jar build/libs/*SNAPSHOT.jar > ./output.log 2>&1 &
