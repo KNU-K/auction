@@ -48,6 +48,6 @@ jobs:
             git pull origin develop
             ./gradlew editorconfigFormat
             ./gradlew build
-            sudo kill -9 $(sudo lsof -t -i :8080)
+            sudo kill -9 $(sudo lsof -t -i:8080 || echo "")
             nohup java -jar build/libs/*SNAPSHOT.jar > ./output.log 2>&1 &
 
