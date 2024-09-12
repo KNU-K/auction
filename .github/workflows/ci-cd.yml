@@ -48,9 +48,5 @@ jobs:
             git pull knk ttest
             ./gradlew editorconfigFormat
             ./gradlew build
-            PIDS=$(sudo lsof -t -i:8080)
-            if [ ! -z "$PIDS" ]; then
-            sudo kill -9 $PIDS
-            fi
             nohup java -jar build/libs/*SNAPSHOT.jar > ./output.log 2>&1 &
 
