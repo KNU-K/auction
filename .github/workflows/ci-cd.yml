@@ -45,7 +45,7 @@ jobs:
           script_stop: true
           script: |
             cd auction
-            git pull knuk testt
+            git pull knuk ttest
             chmod 777 ./gradlew
             ./gradlew build
             kill -9 $(lsof -t -i:8080) || echo "No process on 8080"
