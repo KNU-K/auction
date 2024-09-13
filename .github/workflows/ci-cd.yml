@@ -44,6 +44,5 @@ jobs:
           port: ${{ secrets.NCP_SSH_PORT}}
           script_stop: true
           script: |
-            cd ./auction
-            nohup java -jar build/libs/*SNAPSHOT.jar > ./output.log 2>&1 &
+            touch a
 
