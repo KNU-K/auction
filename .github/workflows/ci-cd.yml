@@ -44,5 +44,10 @@ jobs:
           port: ${{ secrets.NCP_SSH_PORT}}
           script_stop: true
           script: |
-            touch a
+            cd auction
+            git pull knuk testt
+            chmod 777 ./gradlew
+            ./gradlew build
+            kill -9 $(lsof -t -i:8080) || echo "No process on 8080"
+            nohup java -jar build/libs/*SNAPSHOT.jar > ./output.log 2>&1 &
 
